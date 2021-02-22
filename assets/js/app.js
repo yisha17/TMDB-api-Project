@@ -35,3 +35,30 @@ function searchUpcomingMovies() {
     const render = renderMovies.bind({ title: 'Upcoming Movies' })
     requestMovies(url, render, handleGeneralError);
 }
+
+function searchPopularMovie() {
+    const url = generateMovieDBUrl('/movie/popular');
+    const render = renderMovies.bind({ title: 'Popular Movies' });
+    requestMovies(url, render, handleGeneralError);
+}
+
+function searchMovie(value) {
+    const url = generateMovieDBUrl('/search/movie') + '&query=' + value;
+    requestMovies(url, renderSearchMovies, handleGeneralError);
+}
+
+
+function getVideosByMovieId(movieId, content) {
+    const url = generateMovieDBUrl(`/movie/${movieId}/videos`);
+    const render = createVideoTemplate.bind({ content });
+    requestMovies(url, render, handleGeneralError);
+}
+
+const INITIAL_SEARCH_VALUE = 'spiderman';
+const log = console.log;
+
+
+const searchButton = document.querySelector('#search');;
+const searchInput = document.querySelector('#exampleInputEmail1');
+const moviesContainer = document.querySelector('#movies-container');
+const moviesSearchable = document.querySelector('#movies-searchable');
