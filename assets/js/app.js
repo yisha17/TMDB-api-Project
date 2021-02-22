@@ -9,3 +9,29 @@ function requestMovies(url, onComplete, onError) {
         .then(onComplete)
         .catch(onError);
 }
+
+function generateMovieDBUrl(path) {
+    const url = `${MOVIE_DB_ENDPOINT}/3${path}?api_key=${MOVIE_DB_API}`;
+    return url;
+}
+
+
+function getTopRatedMovies() {
+    const url = generateMovieDBUrl(`/movie/top_rated`);
+    const render = renderMovies.bind({ title: 'Top Rated Movies' })
+    requestMovies(url, render, handleGeneralError);
+}
+
+
+function getTrendingMovies() {
+    const url = generateMovieDBUrl('/trending/movie/day');
+    const render = renderMovies.bind({ title: 'Trending Movies' })
+    requestMovies(url, render, handleGeneralError);
+}
+
+
+function searchUpcomingMovies() {
+    const url = generateMovieDBUrl('/movie/upcoming');
+    const render = renderMovies.bind({ title: 'Upcoming Movies' })
+    requestMovies(url, render, handleGeneralError);
+}
