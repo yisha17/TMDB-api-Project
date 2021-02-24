@@ -62,3 +62,35 @@ const searchButton = document.querySelector('#search');;
 const searchInput = document.querySelector('#exampleInputEmail1');
 const moviesContainer = document.querySelector('#movies-container');
 const moviesSearchable = document.querySelector('#movies-searchable');
+
+function createImageContainer(imageUrl, id) {
+    const tempDiv = document.createElement('div');
+    tempDiv.setAttribute('class', 'imageContainer');
+    tempDiv.setAttribute('data-id', id);
+
+    const movieElement = `
+        <img src="${imageUrl}" alt="" data-movie-id="${id}">
+    `;
+    tempDiv.innerHTML = movieElement;
+
+    return tempDiv;
+}
+
+function resetInput() {
+    searchInput.value = '';
+}
+
+function handleGeneralError(error) {
+    log('Error: ', error.message);
+    alert(error.message || 'Internal Server');
+}
+
+function createIframe(video) {
+    const videoKey = (video && video.key) || 'No key found!!!';
+    const iframe = document.createElement('iframe');
+    iframe.src = `http://www.youtube.com/embed/${videoKey}`;
+    iframe.width = 360;
+    iframe.height = 315;
+    iframe.allowFullscreen = true;
+    return iframe;
+}
