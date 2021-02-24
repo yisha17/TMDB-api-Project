@@ -102,3 +102,24 @@ function insertIframeIntoContent(video, content) {
     videoContent.appendChild(iframe);
     content.appendChild(videoContent);
 }
+
+
+function createVideoTemplate(data) {
+    const content = this.content;
+    content.innerHTML = '<p id="content-close">X</p>';
+    
+    const videos = data.results || [];
+
+    if (videos.length === 0) {
+        content.innerHTML = `
+            <p id="content-close">X</p>
+            <p>No Trailer found for this video id of ${data.id}</p>
+        `;
+        return;
+    }
+
+    for (let i = 0; i < 4; i++) {
+        const video = videos[i];
+        insertIframeIntoContent(video, content);
+    }
+}
