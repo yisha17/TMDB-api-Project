@@ -94,3 +94,11 @@ function createIframe(video) {
     iframe.allowFullscreen = true;
     return iframe;
 }
+
+function insertIframeIntoContent(video, content) {
+    const videoContent = document.createElement('div');
+    const iframe = createIframe(video);
+
+    videoContent.appendChild(iframe);
+    content.appendChild(videoContent);
+}
