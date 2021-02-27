@@ -10,3 +10,14 @@ function requestMovies(url, onComplete, onError) {
         .catch(onError);
 }
 
+function generateMovieDBUrl(path) {
+    const url = `${MOVIE_DB_ENDPOINT}/3${path}?api_key=${MOVIE_DB_API}`;
+    return url;
+}
+
+
+function getTopRatedMovies() {
+    const url = generateMovieDBUrl(`/movie/top_rated`);
+    const render = renderMovies.bind({ title: 'Top Rated Movies' })
+    requestMovies(url, render, handleGeneralError);
+}
