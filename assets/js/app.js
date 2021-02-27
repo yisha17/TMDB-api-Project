@@ -123,3 +123,18 @@ function createVideoTemplate(data) {
         insertIframeIntoContent(video, content);
     }
 }
+
+function createSectionHeader(title) {
+    const header = document.createElement('h2');
+    header.innerHTML = title;
+
+    return header;
+}
+
+
+function renderMovies(data) {
+    const moviesBlock = generateMoviesBlock(data);
+    const header = createSectionHeader(this.title);
+    moviesBlock.insertBefore(header, moviesBlock.firstChild);
+    moviesContainer.appendChild(moviesBlock);
+}
