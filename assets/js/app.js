@@ -138,3 +138,30 @@ function renderMovies(data) {
     moviesBlock.insertBefore(header, moviesBlock.firstChild);
     moviesContainer.appendChild(moviesBlock);
 }
+
+
+function renderSearchMovies(data) {
+    moviesSearchable.innerHTML = '';
+    const moviesBlock = generateMoviesBlock(data);
+    moviesSearchable.appendChild(moviesBlock);
+}
+
+function generateMoviesBlock(data) {
+    const movies = data.results;
+    const section = document.createElement('section');
+    section.setAttribute('class', 'section');
+
+    for (let i = 0; i < movies.length; i++) {
+        const { poster_path, id } = movies[i];
+
+        if (poster_path) {
+            const imageUrl = MOVIE_DB_IMAGE_ENDPOINT + poster_path;
+    
+            const imageContainer = createImageContainer(imageUrl, id);
+            section.appendChild(imageContainer);
+        }
+    }
+
+    const movieSectionAndContent = createMovieContainer(section);
+    return movieSectionAndContent;
+}
