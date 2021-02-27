@@ -21,3 +21,23 @@ function getTopRatedMovies() {
     const render = renderMovies.bind({ title: 'Top Rated Movies' })
     requestMovies(url, render, handleGeneralError);
 }
+
+
+function getTrendingMovies() {
+    const url = generateMovieDBUrl('/trending/movie/day');
+    const render = renderMovies.bind({ title: 'Trending Movies' })
+    requestMovies(url, render, handleGeneralError);
+}
+
+
+function searchUpcomingMovies() {
+    const url = generateMovieDBUrl('/movie/upcoming');
+    const render = renderMovies.bind({ title: 'Upcoming Movies' })
+    requestMovies(url, render, handleGeneralError);
+}
+
+function searchPopularMovie() {
+    const url = generateMovieDBUrl('/movie/popular');
+    const render = renderMovies.bind({ title: 'Popular Movies' });
+    requestMovies(url, render, handleGeneralError);
+}
