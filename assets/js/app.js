@@ -211,3 +211,10 @@ document.onclick = function (event) {
         content.classList.remove('content-display');
     }
 }
+
+
+searchMovie(INITIAL_SEARCH_VALUE);
+searchUpcomingMovies();
+getTopRatedMovies();
+searchPopularMovie();
+getTrendingMovies();
