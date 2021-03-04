@@ -165,3 +165,56 @@ function generateMoviesBlock(data) {
     const movieSectionAndContent = createMovieContainer(section);
     return movieSectionAndContent;
 }
+
+
+
+
+function createMovieContainer(section) {
+    const movieElement = document.createElement('div');
+    movieElement.setAttribute('class', 'movie');
+
+    const template = `
+        <div class="content">
+            <p id="content-close">X</p>
+        </div>
+    `;
+
+    movieElement.innerHTML = template;
+    movieElement.insertBefore(section, movieElement.firstChild);
+    return movieElement;
+}
+
+searchButton.onclick = function (event) {
+    event.preventDefault();
+    const value = searchInput.value
+
+   if (value) {
+    searchMovie(value);
+   }
+    resetInput();
+}
+
+
+document.onclick = function (event) {
+    log('Event: ', event);
+    const { tagName, id } = event.target;
+    if (tagName.toLowerCase() === 'img') {
+        const movieId = event.target.dataset.movieId;
+        const section = event.target.parentElement.parentElement;
+        const content = section.nextElementSibling;
+        content.classList.add('content-display');
+        getVideosByMovieId(movieId, content);
+    }
+
+    if (id === 'content-close') {
+        const content = event.target.parentElement;
+        content.classList.remove('content-display');
+    }
+}
+
+
+searchMovie(INITIAL_SEARCH_VALUE);
+searchUpcomingMovies();
+getTopRatedMovies();
+searchPopularMovie();
+getTrendingMovies();
