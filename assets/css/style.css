@@ -45,3 +45,14 @@ header h1{
   cursor: pointer;
   white-space: nowrap;
 }
+.menu-bar li::before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    transition: 0.2s;
+    border-radius: 25px;
+  }
