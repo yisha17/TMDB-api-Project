@@ -95,3 +95,101 @@ function createIframe(video) {
     return iframe;
 }
 
+unction insertIframeIntoContent(video, content) {
+    const videoContent = document.createElement('div');
+    const iframe = createIframe(video);
+
+    videoContent.appendChild(iframe);
+    content.appendChild(videoContent);
+}
+
+
+function createVideoTemplate(data) {
+    const content = this.content;
+    content.innerHTML = '<p id="content-close">X</p>';
+    
+    const videos = data.results || [];
+
+    if (videos.length === 0) {
+        content.innerHTML = `
+            <p id="content-close">X</p>
+            <p>No Trailer found for this video id of ${data.id}</p>
+        `;
+        return;
+    }
+
+    for (let i = 0; i < 4; i++) {
+        const video = videos[i];
+        insertIframeIntoContent(video, content);
+    }
+}
+
+function createSectionHeader(title) {
+    const header = document.createElement('h2');
+    header.innerHTML = title;
+
+    return header;
+}
+
+
+function renderMovies(data) {
+    const moviesBlock = generateMoviesBlock(data);
+    const header = createSectionHeader(this.title);
+    moviesBlock.insertBefore(header, moviesBlock.firstChild);
+    moviesContainer.appendChild(moviesBlock);
+}
+
+
+function renderSearchMovies(data) {
+    moviesSearchable.innerHTML = '';
+    const moviesBlock = generateMoviesBlock(data);
+    moviesSearchable.appendChild(moviesBlock);
+}
+
+function generateMoviesBlock(data) {
+    const movies = data.results;
+    const section = document.createElement('section');
+    section.setAttribute('class', 'section');
+
+    for (let i = 0; i < movies.length; i++) {
+        const { poster_path, id } = movies[i];
+
+        if (poster_path) {
+            const imageUrl = MOVIE_DB_IMAGE_ENDPOINT + poster_path;
+    
+            const imageContainer = createImageContainer(imageUrl, id);
+            section.appendChild(imageContainer);
+        }
+    }
+
+    const movieSectionAndContent = createMovieContainer(section);
+    return movieSectionAndContent;
+}
+
+
+
+// Inserting section before content element
+function createMovieContainer(section) {
+    const movieElement = document.createElement('div');
+    movieElement.setAttribute('class', 'movie');
+
+    const template = `
+        <div class="content">
+            <p id="content-close">X</p>
+        </div>
+    `;
+
+    movieElement.innerHTML = template;
+    movieElement.insertBefore(section, movieElement.firstChild);
+    return movieElement;
+}
+
+searchButton.onclick = function (event) {
+    event.preventDefault();
+    const value = searchInput.value
+
+   if (value) {
+    searchMovie(value);
+   }
+    resetInput();
+}
