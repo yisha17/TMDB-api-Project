@@ -74,6 +74,13 @@ header h1{
 .movie {
     margin-top: 50px;
 }
+.movie h2{
+    text-align: center;
+    background: rgb(20, 21, 53);
+    color: aqua;
+    font-size: 36px;
+}
+
 
 section {
     position: relative;
