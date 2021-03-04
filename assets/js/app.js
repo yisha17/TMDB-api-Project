@@ -57,7 +57,7 @@ function getVideosByMovieId(movieId, content) {
 const INITIAL_SEARCH_VALUE = 'spiderman';
 const log = console.log;
 
-// Selecting elements from the DOM
+
 const searchButton = document.querySelector('#search');;
 const searchInput = document.querySelector('#exampleInputEmail1');
 const moviesContainer = document.querySelector('#movies-container');
@@ -168,7 +168,7 @@ function generateMoviesBlock(data) {
 
 
 
-// Inserting section before content element
+
 function createMovieContainer(section) {
     const movieElement = document.createElement('div');
     movieElement.setAttribute('class', 'movie');
@@ -194,8 +194,7 @@ searchButton.onclick = function (event) {
     resetInput();
 }
 
-// Click on any movies
-// Event Delegation
+
 document.onclick = function (event) {
     log('Event: ', event);
     const { tagName, id } = event.target;
