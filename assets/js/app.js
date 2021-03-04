@@ -95,7 +95,7 @@ function createIframe(video) {
     return iframe;
 }
 
-unction insertIframeIntoContent(video, content) {
+function insertIframeIntoContent(video, content) {
     const videoContent = document.createElement('div');
     const iframe = createIframe(video);
 
@@ -193,3 +193,29 @@ searchButton.onclick = function (event) {
    }
     resetInput();
 }
+
+// Click on any movies
+// Event Delegation
+document.onclick = function (event) {
+    log('Event: ', event);
+    const { tagName, id } = event.target;
+    if (tagName.toLowerCase() === 'img') {
+        const movieId = event.target.dataset.movieId;
+        const section = event.target.parentElement.parentElement;
+        const content = section.nextElementSibling;
+        content.classList.add('content-display');
+        getVideosByMovieId(movieId, content);
+    }
+
+    if (id === 'content-close') {
+        const content = event.target.parentElement;
+        content.classList.remove('content-display');
+    }
+}
+
+// Initialize the search
+searchMovie(INITIAL_SEARCH_VALUE);
+searchUpcomingMovies();
+getTopRatedMovies();
+searchPopularMovie();
+getTrendingMovies();
