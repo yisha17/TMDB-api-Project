@@ -19,3 +19,11 @@ header h1{
     color: #7f9184;
     font-size: 75px;
 }
+
+.menu-bar {
+    border-radius: 25px;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    display: inline-flex;
+    background-color: rgba(0, 0, 0, 0.4);
