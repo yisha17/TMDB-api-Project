@@ -67,3 +67,11 @@ header h1{
 .container {
     padding: 20px;
     margin: 0 auto;
+}
+form{
+    display: inline;
+}
+.movie {
+    margin-top: 50px;
+
+}
