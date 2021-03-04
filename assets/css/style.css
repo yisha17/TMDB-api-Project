@@ -75,3 +75,11 @@ form{
     margin-top: 50px;
 
 }
+}
+form{
+    display: inline;
+}
+.movie {
+    margin-top: 50px;
+
+}
