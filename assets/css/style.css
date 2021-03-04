@@ -13,3 +13,9 @@ header{
     display: flex;
     justify-content: center;
 }
+header h1{
+    position:absolute;
+    top:150px;
+    color: #7f9184;
+    font-size: 75px;
+}
