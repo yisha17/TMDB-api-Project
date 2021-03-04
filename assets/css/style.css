@@ -83,3 +83,32 @@ form{
     margin-top: 50px;
 
 }
+
+.imageContainer {
+    transition: 250ms all;
+    width: 300px;
+}
+
+
+.imageContainer:hover {
+    margin-left: 0 40px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.imageContainer {
+    border-radius: 4px;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.imageContainer img {
+    width: 100%;
+}
+
+.movie h2{
+    text-align: center;
+    background: rgb(20, 21, 53);
+    color: aqua;
+    font-size: 36px;
+}
